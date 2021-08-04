@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
+using ProductOrderService.Database;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ProductOrderService.Database;
 
 namespace ProductOrderService.Controllers
 {
@@ -23,12 +22,12 @@ namespace ProductOrderService.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(int userId)
         {
             List<Order> orders = new List<Order>();
-            orders = await _dbContext.Order.ToListAsync();
+            orders = await _dbContext.Order.Where(x=>x.UserID==userId).ToListAsync();
 
-            return orders == null || orders.Count()==0 ? NotFound("There are no orders available") : Ok(orders);
+            return orders == null || orders.Count() == 0 ? NotFound("There are no orders available") : Ok(orders);
         }
 
         [HttpPost]

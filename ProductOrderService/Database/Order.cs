@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ProductOrderService.Database
 {
@@ -11,7 +8,7 @@ namespace ProductOrderService.Database
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderID { get; set; }
 
-       
+
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
         [ForeignKey("UserID")]
@@ -24,7 +21,7 @@ namespace ProductOrderService.Database
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderDetailId { get; set; }
         public int OrderID { get; set; }
-      
+
         public int Quantity { get; set; }
 
         public virtual Order Order { get; set; }

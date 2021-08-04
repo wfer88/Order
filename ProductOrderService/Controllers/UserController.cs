@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ProductOrderService.Database;
+using System.Threading.Tasks;
 
 
 namespace ProductOrderService.Controllers
@@ -29,7 +26,7 @@ namespace ProductOrderService.Controllers
             var user = await _dbContext.User
                     .SingleOrDefaultAsync(x => x.UserId == userId);
 
-            return user == null ? NotFound(userId + " Not present in database") :Ok(user);
+            return user == null ? NotFound(userId + " Not present in database") : Ok(user);
         }
 
         [HttpPost]

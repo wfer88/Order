@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
+using ProductOrderService.Database;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ProductOrderService.Database;
 
 namespace ProductOrderService.Controllers
 {
@@ -26,11 +25,11 @@ namespace ProductOrderService.Controllers
         public async Task<IActionResult> Get()
         {
             List<Product> products = new List<Product>();
-            products= await _dbContext.Product.ToListAsync();
+            products = await _dbContext.Product.ToListAsync();
 
-            return products == null || products.Count()==0 ? NotFound("There are no products available") : Ok(products);
+            return products == null || products.Count() == 0 ? NotFound("There are no products available") : Ok(products);
         }
 
-        
+
     }
 }
