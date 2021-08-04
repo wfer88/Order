@@ -9,7 +9,8 @@ import { ProductComponent } from './product/product.component';
 import { OrderComponent } from './order/order.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import{ HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
+import{ FormsModule} from '@angular/forms'
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import{ HttpClientModule} from '@angular/common/http'
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

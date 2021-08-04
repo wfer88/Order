@@ -17,6 +17,6 @@ export interface UserAddress {
 }
 
 export enum AddressType {
-  Residential,
-  Business
+  Residential=0,
+  Business=1
 }

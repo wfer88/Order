@@ -19,7 +19,10 @@ export class UserServiceService {
   }
   
   addUser(user: User) {
-    return this.http.post(this.baseURL, user);
+    const headers = { 'content-type': 'application/json' }
+    const body = JSON.stringify(user);
+    return  this.http.post<User>(this.baseURL , body,{'headers':headers , observe: 'response'})
+    
   }
 }
 

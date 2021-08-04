@@ -1,1 +1,31 @@
-<p>user works!</p>
+<form #loginForm="ngForm" (ngSubmit)="adduser()">
+    <div class="form-group">
+       <h1> <label for="formName">Registration Form</label></h1>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="name" [(ngModel)]="userdata.name" placeholder="First Name" ngModel >
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="surname" [(ngModel)]="userdata.surname"  placeholder="Last Name" ngModel >
+      </div>
+      <div class="form-group">
+        <label for="addressType">Address Type</label>
+        <select class="form-control" name="addressType" [(ngModel)]="userAdress.addressType" ngModel  >
+          <option>Residential</option>
+          <option>Business</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="streetAddress"  placeholder="Street Address" [(ngModel)]="userAdress.streetAddress" ngModel >
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="suburb"  placeholder="Suburb"  [(ngModel)]="userAdress.suburb" ngModel >
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="city"  placeholder="City" [(ngModel)]="userAdress.city" ngModel >
+      </div>
+      <div class="form-group">
+        <input type="number" min="2000" value="2000" class="form-control" id="postalCode" name="postalCode"  placeholder="Postal Code" [(ngModel)]="userAdress.postalCode" ngModel >
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>

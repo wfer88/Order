@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/Services/user-service.service'
-import { User } from "src/app/Models/User";
+import { User, UserAddress } from "src/app/Models/User";
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -17,7 +17,8 @@ export class UserComponent implements OnInit {
   userid: number = 1;
   
   userdata: User = {} as User;
- 
+  
+  userAdress: UserAddress = {} as UserAddress;
   getUser()
   {
       this.userService.getUser(this.userid).subscribe(data => {console.log(data)
@@ -26,6 +27,9 @@ export class UserComponent implements OnInit {
   }
 
   adduser() {
+
+    this.userdata.userAddresses =[];
+    this.userdata.userAddresses.push(this.userAdress);
     this.userService.addUser(this.userdata)
       .subscribe(data => {
         console.log(data)
