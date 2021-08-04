@@ -8,7 +8,7 @@ export interface User {
 export interface UserAddress {
   userAddressId: number;
   userId: number;
-  addressType: AddressType;
+  addressType: number;
   streetAddress: string;
   suburb: string;
   city: string;
@@ -16,7 +16,3 @@ export interface UserAddress {
   user: User;
 }
 
-export enum AddressType {
-  Residential=0,
-  Business=1
-}

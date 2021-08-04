@@ -10,9 +10,10 @@
       </div>
       <div class="form-group">
         <label for="addressType">Address Type</label>
-        <select class="form-control" name="addressType" [(ngModel)]="userAdress.addressType" ngModel  >
-          <option>Residential</option>
-          <option>Business</option>
+        <select class="form-control" name="addressType" [(ngModel)]="userAdress.addressType"   convert-to-number >
+          <option value="2">Select one</option>
+          <option value="0">Residential</option>
+          <option value="1">Business</option>
         </select>
       </div>
       <div class="form-group">

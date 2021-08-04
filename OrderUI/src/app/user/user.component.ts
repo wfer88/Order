@@ -28,8 +28,13 @@ export class UserComponent implements OnInit {
 
   adduser() {
 
+    this.userdata.userId = this.userAdress.userId = this.userAdress.userAddressId = 0;
+    this.userAdress.addressType=Number(this.userAdress.addressType);
     this.userdata.userAddresses =[];
     this.userdata.userAddresses.push(this.userAdress);
+   
+    console.log(this.userdata);
+    debugger;
     this.userService.addUser(this.userdata)
       .subscribe(data => {
         console.log(data)
