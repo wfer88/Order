@@ -5,6 +5,7 @@ import { Order, OrderDetail } from "src/app/Models/Order";
 import { Product} from "src/app/Models/Product";
 import { CartService } from 'src/app/Services/cart.service';
 import { OrderServiceService } from 'src/app/Services/order-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -14,7 +15,7 @@ export class UserComponent implements OnInit {
   
 
   constructor(private userService: UserServiceService, private CartService: CartService,
-    private OrderService: OrderServiceService)
+    private OrderService: OrderServiceService,private router: Router)
   { }
 
   ngOnInit(): void {
@@ -44,6 +45,8 @@ export class UserComponent implements OnInit {
         //console.log( data.body);
       })
     this.saveOrder(this.userid);
+    
+  
   }
 
   saveOrder(userId: number)
@@ -63,7 +66,11 @@ export class UserComponent implements OnInit {
               }}
     this.OrderService.addOrder(orderdata).subscribe(data => {
        console.log( data.body);
-     });
+    });
+    
+    this.router.navigate(['/order']);
+    this.CartService.clearCart();
+    
   }
 
 }
