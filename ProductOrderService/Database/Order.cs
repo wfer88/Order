@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ProductOrderService.Database
 {
@@ -8,8 +9,8 @@ namespace ProductOrderService.Database
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderID { get; set; }
 
-
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+       
+        public  ICollection<OrderDetail> OrderDetails { get; set; }
 
         [ForeignKey("UserID")]
         public int UserID { get; set; }
@@ -24,11 +25,14 @@ namespace ProductOrderService.Database
 
         public int Quantity { get; set; }
 
-        public virtual Order Order { get; set; }
+        [JsonIgnore]
+        public  Order Order { get; set; }
 
         [ForeignKey("ProductID")]
         public int ProductID { get; set; }
-        public virtual Product Product { get; set; }
+
+        [JsonIgnore]
+        public  Product Product { get; set; }
     }
 
 }

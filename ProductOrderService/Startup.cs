@@ -24,6 +24,7 @@ namespace ProductOrderService
         {
             //services.AddControllers().AddJsonOptions(x =>
             //                    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            
             services.AddDbContext<DatabaseContext>
                       (o => o.UseSqlServer(Configuration.
                        GetConnectionString("MyConnection")));

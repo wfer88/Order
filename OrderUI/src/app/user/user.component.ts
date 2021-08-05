@@ -48,7 +48,7 @@ export class UserComponent implements OnInit {
 
   saveOrder(userId: number)
   {
-     
+  
     let orderdata: Order = {} as Order;
     let OrderDetails: OrderDetail = {} as OrderDetail;
     orderdata.orderDetails = [];

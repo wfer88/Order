@@ -10,7 +10,7 @@ export class OrderServiceService {
 
   constructor(private http: HttpClient) { }
 
-  baseURL = "http://localhost:3093/User";
+  baseURL = "http://localhost:3093/Order";
 
   getOrders(userId: Number): Observable<Order[]> {
     let url = this.baseURL + "?userId=" + Number;
@@ -18,6 +18,7 @@ export class OrderServiceService {
   }
   
   addOrder(order: Order) {
+   
     return this.http.post<any>(this.baseURL, order);
   }
 }

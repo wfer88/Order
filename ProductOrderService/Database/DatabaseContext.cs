@@ -6,7 +6,7 @@ namespace ProductOrderService.Database
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
-
+           
         }
         public DbSet<User> User { get; set; }
         public DbSet<UserAddress> UserAddress { get; set; }
@@ -14,15 +14,15 @@ namespace ProductOrderService.Database
         public DbSet<Order> Order { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserAddress>()
-                .HasOne<User>(s => s.User)
-                .WithMany(g => g.UserAddresses)
-                .HasForeignKey(s => s.UserId);
+            //modelBuilder.Entity<UserAddress>()
+            //    .HasOne<User>(s => s.User)
+            //    .WithMany(g => g.UserAddresses)
+            //    .HasForeignKey(s => s.UserId);
 
-            modelBuilder.Entity<OrderDetail>()
-                .HasOne<Order>(s => s.Order)
-                .WithMany(g => g.OrderDetails)
-                .HasForeignKey(s => s.OrderID);
+            //modelBuilder.Entity<OrderDetail>()
+            //    .HasOne<Order>(s => s.Order)
+            //    .WithMany(g => g.OrderDetails)
+            //    .HasForeignKey(s => s.OrderID);
 
 
 

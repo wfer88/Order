@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ProductOrderService.Database
 {
@@ -10,7 +11,9 @@ namespace ProductOrderService.Database
         public int UserId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public virtual ICollection<UserAddress> UserAddresses { get; set; }
+
+        
+        public  ICollection<UserAddress> UserAddresses { get; set; }
     }
 
     public class UserAddress
@@ -23,7 +26,10 @@ namespace ProductOrderService.Database
         public string Suburb { get; set; }
         public string City { get; set; }
         public int PostalCode { get; set; }
-        public virtual User User { get; set; }
+
+
+        [JsonIgnore]
+        public  User User { get; set; }
     }
     public enum AddressType
     {
