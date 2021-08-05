@@ -1,3 +1,4 @@
+<span>{{messageText}}</span>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -5,7 +6,7 @@
       <th scope="col">Title</th>
       <th scope="col">Description</th>
       <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
+      <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
@@ -16,15 +17,7 @@
         <td>{{item.title}}</td>
         <td>{{item.description}}</td>
         <td>{{item.price | currency:'USD'}}</td>
-        <td><input type="number" [(ngModel)]="item.quantity" min="0"  value="0"  aria-label="Search" class="form-control" style="width: 100px"></td>
-    </tr>
+        <td><button (click)="addToCart(item)">Add to Cart</button></td>
+      </tr>
     </tbody>
-    <tbody>
-    <tr>
-        <td colspan="3" class="text-right">
-            <button type="button" class="btn-primary" ngbButtonLabel color="primary" rounded="true">Complete purchase
-            </button>
-          </td>
-    </tr>
-</tbody>
   </table>

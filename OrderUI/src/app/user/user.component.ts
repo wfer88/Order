@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/Services/user-service.service'
 import { User, UserAddress } from "src/app/Models/User";
+import { Order, OrderDetail } from "src/app/Models/Order";
+import { Product} from "src/app/Models/Product";
+import { CartService } from 'src/app/Services/cart.service';
+import { OrderServiceService } from 'src/app/Services/order-service.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -9,16 +13,17 @@ import { User, UserAddress } from "src/app/Models/User";
 export class UserComponent implements OnInit {
   
 
-  constructor(private userService: UserServiceService) { }
+  constructor(private userService: UserServiceService, private CartService: CartService,
+    private OrderService: OrderServiceService)
+  { }
 
   ngOnInit(): void {
   }
- 
+  
   userid: number = 1;
-  
   userdata: User = {} as User;
-  
   userAdress: UserAddress = {} as UserAddress;
+
   getUser()
   {
       this.userService.getUser(this.userid).subscribe(data => {console.log(data)
@@ -32,14 +37,33 @@ export class UserComponent implements OnInit {
     this.userAdress.addressType=Number(this.userAdress.addressType);
     this.userdata.userAddresses =[];
     this.userdata.userAddresses.push(this.userAdress);
-   
-    console.log(this.userdata);
-    debugger;
-    this.userService.addUser(this.userdata)
+    ;
+      this.userService.addUser(this.userdata)
       .subscribe(data => {
-        console.log(data)
-        this.getUser();
-      })      
+       this.userid = data.body?.userid;
+        //console.log( data.body);
+      })
+    this.saveOrder(this.userid);
+  }
+
+  saveOrder(userId: number)
+  {
+     
+    let orderdata: Order = {} as Order;
+    let OrderDetails: OrderDetail = {} as OrderDetail;
+    orderdata.orderDetails = [];
+    orderdata.userID = userId;
+    let items = this.CartService.getItems();
+
+            if (items.length > 0) {
+              for (let j = 0; j < items.length; j++) {
+                OrderDetails.productID = items[j].productID;
+                OrderDetails.quantity = items[j].quantity;
+                orderdata.orderDetails.push(OrderDetails);
+              }}
+    this.OrderService.addOrder(orderdata).subscribe(data => {
+       console.log( data.body);
+     });
   }
 
 }

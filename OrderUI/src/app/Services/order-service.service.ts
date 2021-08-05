@@ -18,6 +18,6 @@ export class OrderServiceService {
   }
   
   addOrder(order: Order) {
-    return this.http.post(this.baseURL, order);
+    return this.http.post<any>(this.baseURL, order);
   }
 }

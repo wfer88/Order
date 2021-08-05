@@ -1,0 +1,51 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of items">
+        <td>{{item.title}}</td>
+        <td>{{item.price | currency:'USD'}}</td>
+        <td><input type="number" (input)="calcToatal()" [(ngModel)]="item.quantity" min="1"  value="0"  aria-label="Search" class="form-control" style="width: 100px"></td>
+        <td><button (click)="removeFromCart(item.productID)">Remove</button></td>
+    </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td></td>
+            <td>Total :{{total| currency:'USD'}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+
+  </table>
+
+  <table class="table table-striped">
+      <tr>
+          <td>
+            <ul ngbNav #nav="ngbNav" class="nav-pills">
+                <li ngbNavItem>
+                  <a ngbNavLink  class="btn btn-secondary btn-sm" [routerLink]="['/product']">Back to Products</a>
+                </li>
+            </ul>
+          </td>
+          <td>
+
+          </td>
+          <td>
+            <ul ngbNav #nav1="ngbNav" class="nav-pills">
+                <li ngbNavItem>
+                    <a ngbNavLink  [class.disabled]="!isValidLink()"  class="btn btn-primary btn-lg active" [routerLink]="['/user']">Proceed with Order</a>
+                  </li>
+            </ul>
+          </td>
+      </tr>
+  </table>
+  
+

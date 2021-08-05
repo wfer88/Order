@@ -3,30 +3,36 @@
        <h1> <label for="formName">Registration Form</label></h1>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" name="name" [(ngModel)]="userdata.name" placeholder="First Name" ngModel >
+      <input type="text" class="form-control" required pattern="[a-zA-Z]+$" #name="ngModel" name="name" [(ngModel)]="userdata.name" placeholder="First Name" ngModel >
+      <span *ngIf="name.invalid && name.touched" class="alert alert-danger">Please enter valid input</span>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" name="surname" [(ngModel)]="userdata.surname"  placeholder="Last Name" ngModel >
+        <input type="text" class="form-control" required pattern="[a-zA-Z]+$" #surname="ngModel" name="surname" [(ngModel)]="userdata.surname"  placeholder="Last Name" ngModel >
+        <span *ngIf="surname.invalid && surname.touched" class="alert alert-danger">Please enter valid input</span>
       </div>
       <div class="form-group">
         <label for="addressType">Address Type</label>
-        <select class="form-control" name="addressType" [(ngModel)]="userAdress.addressType"   convert-to-number >
-          <option value="2">Select one</option>
-          <option value="0">Residential</option>
+        <select class="form-control"  required #addressType="ngModel" name="addressType" [(ngModel)]="userAdress.addressType"   convert-to-number >
+          <option   value="0">Residential</option>
           <option value="1">Business</option>
         </select>
+        <span *ngIf="addressType.invalid && addressType.touched" class="alert alert-danger">Please select the valid input</span>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" name="streetAddress"  placeholder="Street Address" [(ngModel)]="userAdress.streetAddress" ngModel >
+        <input type="text" class="form-control" required #streetAddress="ngModel" name="streetAddress"  placeholder="Street Address" [(ngModel)]="userAdress.streetAddress" ngModel >
+        <span *ngIf="streetAddress.invalid && streetAddress.touched" class="alert alert-danger">Please enter the valid input</span>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" name="suburb"  placeholder="Suburb"  [(ngModel)]="userAdress.suburb" ngModel >
+        <input type="text" class="form-control" required #suburb="ngModel" name="suburb"  placeholder="Suburb"  [(ngModel)]="userAdress.suburb" ngModel >
+        <span *ngIf="suburb.invalid && suburb.touched" class="alert alert-danger">Please enter the valid input</span>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" name="city"  placeholder="City" [(ngModel)]="userAdress.city" ngModel >
+        <input type="text" class="form-control" required pattern="[a-zA-Z]+$" #city="ngModel" name="city"  placeholder="City" [(ngModel)]="userAdress.city" ngModel >
+        <span *ngIf="city.invalid && city.touched" class="alert alert-danger">Please enter the valid input</span>
       </div>
       <div class="form-group">
-        <input type="number" min="2000" value="2000" class="form-control" id="postalCode" name="postalCode"  placeholder="Postal Code" [(ngModel)]="userAdress.postalCode" ngModel >
+        <input type="number" min="2000" value="2000" required #postalCode="ngModel" class="form-control" id="postalCode" name="postalCode"  placeholder="Postal Code" [(ngModel)]="userAdress.postalCode" ngModel >
+        <span *ngIf="postalCode.invalid && postalCode.touched" class="alert alert-danger">Please enter the valid input</span>
       </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-success">Submit</button>
   </form>

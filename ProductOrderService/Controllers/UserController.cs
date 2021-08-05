@@ -38,7 +38,7 @@ namespace ProductOrderService.Controllers
             }
             await _dbContext.User.AddAsync(user);
             await _dbContext.SaveChangesAsync();
-            return CreatedAtAction(nameof(Get), new { id = user.UserId }, user);
+            return CreatedAtAction(nameof(Post), new { id = user.UserId }, user);
         }
     }
 }

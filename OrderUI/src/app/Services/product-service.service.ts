@@ -14,7 +14,13 @@ export class ProductServiceService {
   baseURL = "http://localhost:3093/Product";
 
   getProucts(): Observable<Product[]> {
-    let url = this.baseURL + "?userId=" + Number;
-    return this.http.get<Product[]>(url);
+    
+    return this.http.get<Product[]>( this.baseURL);
   }
+
+  
+
+  
+
+
 }

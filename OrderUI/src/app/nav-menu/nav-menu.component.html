@@ -1,3 +1,12 @@
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+  
+  <li ngbNavItem>
+    <a class="btn btn-info btn-lg" ngbNavLink [routerLink]="['/cart']">
+      <span class="bi bi-cart"></span>Go to Cart</a>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>
+
 <!--<a routerLink="user">User</a>
 <br/><br/>
 <a routerLink="product">Product</a>
